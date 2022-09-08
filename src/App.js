@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import Banner from './components/Banner';
+import SimpleSlider from './components/SimpleSlider';
+import requests from './requests';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Banner url={requests.fetchNetlixOriginals} />
+      <div style={{ marginTop:'-100px' }}>
+      <SimpleSlider url={requests.fetchTopRated} title='Top Rated Movies' /> 
+      <SimpleSlider url={requests.fetchTrending} title='Trending Now' />      
+      <SimpleSlider  url={requests.fetchNetlixOriginals} title='Netflix Originals' />
+      <SimpleSlider url={requests.fetchActionMovies} title='Action Movies' /> 
+      <SimpleSlider url={requests.fetchComedyMovies} title='Comedy Movies' />       
+      <SimpleSlider url={requests.fetchDocumentaries} title='Documentaries' /> 
+      </div>
     </div>
   );
 }
