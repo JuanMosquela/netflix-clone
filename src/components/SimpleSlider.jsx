@@ -11,6 +11,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Box } from "@mui/system";
+import { Typography } from "@mui/material";
 
 
 
@@ -41,13 +42,20 @@ const SimpleSlider = ({ url, title }) => {
     
 
   return (
-    <Box sx={{
+    <Box sx={{      
       padding:'0 2%',
       mb:'3rem'
     }}>
-      {title}
-    <Swiper
-    // install Swiper modules
+      <Typography
+        variant="h3"
+        sx={{
+          fontSize:{md:'1.4rem', xs:'1rem'},
+          marginBottom:'12px'
+        }}
+        >
+        {title}
+      </Typography>
+    <Swiper    
       modules={[Navigation, Pagination, Scrollbar, Thumbs]}
       spaceBetween={20}
       slidesPerView={7}
@@ -58,19 +66,17 @@ const SimpleSlider = ({ url, title }) => {
       scrollbar={{ draggable: true }}
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log('slide change')}
-      breakpoints={{
-        // when window width is >= 320px
+      breakpoints={{        
         200:{
           slidesPerView: 3,
           spaceBetween: 14,
-        },
+        },       
         
-        // when window width is >= 480px
         480: {
           slidesPerView: 3,
           spaceBetween: 14,
         },
-        // when window width is >= 640px
+        
         640: {
           slidesPerView: 4,
           spaceBetween: 24,

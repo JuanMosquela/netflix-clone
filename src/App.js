@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <Banner url={requests.fetchNetlixOriginals} />
-      <Box sx={{ marginTop: { md:'-100px', sm:'-90px', xs:'-40px' } }}>
+      <Box sx={{ marginTop: { md:'-100px', sm:'-90px', xs:'-25px' } }}>
       <SimpleSlider url={requests.fetchTrending} title='Trending Now' />      
       <SimpleSlider url={requests.fetchTopRated} title='Top Rated Movies' /> 
       <SimpleSlider  url={requests.fetchNetlixOriginals} title='Netflix Originals' />

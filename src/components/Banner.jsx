@@ -11,9 +11,7 @@ const base_urlPoster = 'https://image.tmdb.org/t/p/original/'
 
 const Banner = ({ url }) => {
 
-    const [movie, setMovie] = useState(null) 
-    const [windowWidth, setWindowWidth] = useState(undefined)
-    
+    const [movie, setMovie] = useState(null)    
 
     useEffect(() => {
         const fetchURL = async () => {
@@ -27,14 +25,7 @@ const Banner = ({ url }) => {
         }
         fetchURL()       
       
-    }, [])
-
-    useEffect(() => {
-        const handleResize = () => setWindowWidth(window.innerWidth)       
-
-        window.addEventListener('resize', handleResize)        
-        
-    }, [])
+    }, [])  
 
     
   return (
@@ -61,16 +52,16 @@ const Banner = ({ url }) => {
                 variant='h1'
                     color='#FFF'
                       sx={{
-                        fontSize:{md:'100px', sm:'70px', xs:'50px'},
+                        fontSize:{md:'100px', sm:'70px', xs:'40px'},
                         marginBottom:'2rem'
                                                                         
                     }}>
                     {movie?.name || movie?.original_name}
 
                 </Typography>
-                {windowWidth > 500 && (
-                    <Typography
-                    sx={{                        
+                <Typography
+                    sx={{  
+                        display: {md: 'block', xs:'none'},                      
                         fontSize:{md:'17px', sm:'15px', xs:'14px'},
                         marginBottom:'2rem',                        
                         maxWidth:{ md:'600px', sm:'500px' }}}                   
@@ -78,8 +69,7 @@ const Banner = ({ url }) => {
                         color='#FFF'>
                         {movie?.overview}
 
-                </Typography>
-                )}                
+                </Typography>              
                 
                 <Box sx={{
                     marginBottom:'1.5rem',
