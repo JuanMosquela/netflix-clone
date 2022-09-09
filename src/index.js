@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
+
 import Navbar from './components/Navbar';
 
 
@@ -10,10 +11,11 @@ import Navbar from './components/Navbar';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
-    <Navbar />
-    <Routes>
-        <Route path='/' element={<App />} />
-    </Routes>
+        <Navbar />
+        <Routes>
+            <Route path='/' element={<App />} />
+        </Routes>
+        
     </BrowserRouter>
     
   

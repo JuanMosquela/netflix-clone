@@ -43,8 +43,9 @@ const SimpleSlider = ({ url, title }) => {
 
   return (
     <Box sx={{      
-      padding:'0 2%',
-      mb:'3rem'
+      padding:'2rem 2%',
+      
+      
     }}>
       <Typography
         variant="h3"
