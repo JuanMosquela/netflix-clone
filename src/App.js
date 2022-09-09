@@ -9,8 +9,8 @@ function App() {
     <div className="App">
       <Banner url={requests.fetchNetlixOriginals} />
       <div style={{ marginTop:'-100px' }}>
-      <SimpleSlider url={requests.fetchTopRated} title='Top Rated Movies' /> 
       <SimpleSlider url={requests.fetchTrending} title='Trending Now' />      
+      <SimpleSlider url={requests.fetchTopRated} title='Top Rated Movies' /> 
       <SimpleSlider  url={requests.fetchNetlixOriginals} title='Netflix Originals' />
       <SimpleSlider url={requests.fetchActionMovies} title='Action Movies' /> 
       <SimpleSlider url={requests.fetchComedyMovies} title='Comedy Movies' />       

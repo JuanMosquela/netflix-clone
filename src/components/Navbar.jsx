@@ -4,26 +4,23 @@ import SearchBar from "./SearchBar"
 const Navbar = () => {
 
     const [navbar, setNavbar] = useState(false)
-    const [windowNum, setWindowNum] = useState(0)
+ 
 
-    
-
-
-    const changeBackground = () => {
+    useEffect(() => {
+      const changeBackground = () => {
         console.log(window.scrollY)
         if (window.scrollY >= 66) {
           setNavbar(true)
-          setWindowNum(window.scrollY)
+          
         } else {
           setNavbar(false)
-          setWindowNum(window.scrollY)
+          
         }
-      }
+    }
 
-      useEffect(() => {
-        changeBackground()
-         
-      }, [windowNum])
+    window.addEventListener('scroll', changeBackground)
+      
+    }, [])
     
     
 
@@ -32,7 +29,7 @@ const Navbar = () => {
   return (
     <header
     style={{
-        background: navbar ? 'var(--linear-gradient-top)' : '#FFF',
+        background: navbar ? '#000' : 'var(--linear-gradient-top)',
         position:'fixed',
         width:'100vw', 
         display:'flex',

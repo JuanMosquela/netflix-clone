@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Box, Card, CardMedia, Skeleton, Stack } from "@mui/material";
 import Movie from "./Movie";
+import './simpleSlider.css'
 
 
 
@@ -47,13 +48,14 @@ const SimpleSlider = ({ url, title }) => {
       >{title}</h2>
     {
       loading ? (
-        <Box          
+        <Box 
+        className="container"         
           sx={{
             marginBottom:'2rem',
             display:'flex',            
             gap:2,            
             overflowY:'hidden',
-            overflowX:'scroll',
+            
             width:'100%',
             
                      
@@ -64,28 +66,28 @@ const SimpleSlider = ({ url, title }) => {
        </Box>        
       ) : (                          
             <Box              
-              sx={{ display:'flex', gap:1, marginBottom:'2rem' }}>
+              sx={{ display:'flex', gap:2, marginBottom:'2rem' }}>
               <Skeleton 
                 sx={{ backgroundColor:'rgba(204, 204, 204, 0.2)'}} 
-                variant="rectangular" width={220} height={320} />
+                variant="rectangular" width={240} height={160} />
                 <Skeleton 
                 sx={{ backgroundColor:'rgba(204, 204, 204, 0.2)'}} 
-                variant="rectangular" width={220} height={320} />
+                variant="rectangular" width={240} height={160} />
                 <Skeleton 
                 sx={{ backgroundColor:'rgba(204, 204, 204, 0.2)'}} 
-                variant="rectangular" width={220} height={320} />
+                variant="rectangular" width={240} height={160} />
                 <Skeleton 
                 sx={{ backgroundColor:'rgba(204, 204, 204, 0.2)'}} 
-                variant="rectangular" width={220} height={320} />
+                variant="rectangular" width={240} height={160} />
                 <Skeleton 
                 sx={{ backgroundColor:'rgba(204, 204, 204, 0.2)'}} 
-                variant="rectangular" width={220} height={320} />
+                variant="rectangular" width={240} height={160} />
                 <Skeleton 
                 sx={{ backgroundColor:'rgba(204, 204, 204, 0.2)'}} 
-                variant="rectangular" width={220} height={320} />
+                variant="rectangular" width={240} height={160} />
                 <Skeleton 
                 sx={{ backgroundColor:'rgba(204, 204, 204, 0.2)'}} 
-                variant="rectangular" width={220} height={320} />
+                variant="rectangular" width={240} height={160} />
             </Box>    
 
       )

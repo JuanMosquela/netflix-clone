@@ -1,0 +1,18 @@
+.container{
+    
+    touch-action: pan-x;
+    
+    
+    
+    
+}
+
+
+.container::-webkit-scrollbar { 
+    /* overflow: hidden; */
+    
+    
+    
+    
+      
+}
