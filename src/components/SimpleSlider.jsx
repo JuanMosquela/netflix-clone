@@ -2,10 +2,15 @@ import { useEffect, useState } from "react"
 import axios from "../axios"
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import { Box, Card, CardMedia, Skeleton, Stack } from "@mui/material";
 import Movie from "./Movie";
-import './simpleSlider.css'
+
+import { Navigation, Pagination, Scrollbar, A11y, Thumbs } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import { Box } from "@mui/system";
 
 
 
@@ -36,63 +41,63 @@ const SimpleSlider = ({ url, title }) => {
     
 
   return (
-    
-    <Stack
-      sx={{
-        p:'10px 2%'
-      }}>
-      <h2
-      style={{
-        marginBottom:'10px'
+    <Box sx={{
+      padding:'0 2%',
+      mb:'3rem'
+    }}>
+      {title}
+    <Swiper
+    // install Swiper modules
+      modules={[Navigation, Pagination, Scrollbar, Thumbs]}
+      spaceBetween={20}
+      slidesPerView={7}
+      
+      navigation={true}
+      grabCursor={true}
+      
+      scrollbar={{ draggable: true }}
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log('slide change')}
+      breakpoints={{
+        // when window width is >= 320px
+        200:{
+          slidesPerView: 3,
+          spaceBetween: 14,
+        },
+        
+        // when window width is >= 480px
+        480: {
+          slidesPerView: 3,
+          spaceBetween: 14,
+        },
+        // when window width is >= 640px
+        640: {
+          slidesPerView: 4,
+          spaceBetween: 24,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 32,
+          
+        },
+        1336: {
+          slidesPerView: 6,
+          spaceBetween: 32,
+        },
       }}
-      >{title}</h2>
-    {
-      loading ? (
-        <Box 
-        className="container"         
-          sx={{
-            marginBottom:'2rem',
-            display:'flex',            
-            gap:2,            
-            overflowY:'hidden',
-            
-            width:'100%',
-            
-                     
-          }}>        
-          {movies.map(movie => (
-            <Movie movie={movie} />            
-          ))}
-       </Box>        
-      ) : (                          
-            <Box              
-              sx={{ display:'flex', gap:2, marginBottom:'2rem' }}>
-              <Skeleton 
-                sx={{ backgroundColor:'rgba(204, 204, 204, 0.2)'}} 
-                variant="rectangular" width={240} height={160} />
-                <Skeleton 
-                sx={{ backgroundColor:'rgba(204, 204, 204, 0.2)'}} 
-                variant="rectangular" width={240} height={160} />
-                <Skeleton 
-                sx={{ backgroundColor:'rgba(204, 204, 204, 0.2)'}} 
-                variant="rectangular" width={240} height={160} />
-                <Skeleton 
-                sx={{ backgroundColor:'rgba(204, 204, 204, 0.2)'}} 
-                variant="rectangular" width={240} height={160} />
-                <Skeleton 
-                sx={{ backgroundColor:'rgba(204, 204, 204, 0.2)'}} 
-                variant="rectangular" width={240} height={160} />
-                <Skeleton 
-                sx={{ backgroundColor:'rgba(204, 204, 204, 0.2)'}} 
-                variant="rectangular" width={240} height={160} />
-                <Skeleton 
-                sx={{ backgroundColor:'rgba(204, 204, 204, 0.2)'}} 
-                variant="rectangular" width={240} height={160} />
-            </Box>    
+    >
+      
+      {movies.map(movie => (
 
-      )
-    }
-  </Stack>
+        <SwiperSlide>
+          <Movie movie={movie} />
+        </SwiperSlide>
+      ))}
+      
+  </Swiper>
+    </Box>
+    
+    
   )
 }
 export default SimpleSlider

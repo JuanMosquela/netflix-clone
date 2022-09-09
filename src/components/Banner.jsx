@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Card, CardContent, CardMedia, Stack, Typography } from '@mui/material'
+import { Button, Stack, Typography } from '@mui/material'
 import {GoTriangleRight} from 'react-icons/go'
 import {AiOutlineInfoCircle} from 'react-icons/ai'
 import { Box } from '@mui/system'
@@ -12,8 +12,8 @@ const base_urlPoster = 'https://image.tmdb.org/t/p/original/'
 const Banner = ({ url }) => {
 
     const [movie, setMovie] = useState(null) 
-
-    console.log(url)
+    const [windowWidth, setWindowWidth] = useState(undefined)
+    
 
     useEffect(() => {
         const fetchURL = async () => {
@@ -29,20 +29,26 @@ const Banner = ({ url }) => {
       
     }, [])
 
-     console.log(movie)
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth)       
 
+        window.addEventListener('resize', handleResize)        
+        
+    }, [])
 
+    
   return (
    
         <Stack>
             <Box                
                 width='100%'
-                height={700}                               
+                                               
                 sx={{
                     objectFit:'cover',
                     backgroundImage:`url(${base_urlPoster}${movie?.poster_path})`,
                     backgroundPosition:'center',
-                    backgroundSize:'cover'
+                    backgroundSize:'cover',
+                    minHeight: { md:'90vh', sm:'85vh', xs:'60vh' }
                 }}
             >
                 <Box sx={{ 
@@ -55,26 +61,26 @@ const Banner = ({ url }) => {
                 variant='h1'
                     color='#FFF'
                       sx={{
-                        fontSize:'5rem',
+                        fontSize:{md:'100px', sm:'70px', xs:'50px'},
                         marginBottom:'2rem'
                                                                         
                     }}>
                     {movie?.name || movie?.original_name}
 
                 </Typography>
-                
-                <Typography
-                    sx={{ 
-                        
-                        fontSize:'17px',
-                        marginBottom:'2rem',
-                        
-                        maxWidth:'600px' }}                    
+                {windowWidth > 500 && (
+                    <Typography
+                    sx={{                        
+                        fontSize:{md:'17px', sm:'15px', xs:'14px'},
+                        marginBottom:'2rem',                        
+                        maxWidth:{ md:'600px', sm:'500px' }}}                   
                         fontWeight='bold'
-                    color='#FFF'>
+                        color='#FFF'>
                         {movie?.overview}
 
                 </Typography>
+                )}                
+                
                 <Box sx={{
                     marginBottom:'1.5rem',
                     display:'flex',
@@ -84,11 +90,11 @@ const Banner = ({ url }) => {
                     <Button 
                         variant="contained"
                         sx={{
-                             fontSize:'18px',
+                            fontSize:{md:'17px', sm:'14px', xs:'10px'},
                             backgroundColor:'#FFF',
                             color:"#000",
                             borderRadius:'5px',
-                            px:'30px',
+                            px:'15px',
                             textTransform:'capitalize',
                             fontWeight:'bold'
                         }}>
@@ -99,11 +105,11 @@ const Banner = ({ url }) => {
                     <Button 
                         variant="contained"
                         sx={{
-                            fontSize:'18px',
+                            fontSize:{md:'17px', sm:'14px', xs:'10px'},
                             backgroundColor:'rgba(128, 128, 128, .6)',
                             borderRadius:'5px', 
                             textTransform:'capitalize', 
-                            px:'30px',           
+                            px:'15px',           
                             
                             color:"#FFF"
                         }}>

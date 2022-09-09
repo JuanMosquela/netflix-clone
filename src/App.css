@@ -8,6 +8,10 @@
 
 }
 
+.html{
+  font-size: 62.5%;
+}
+
 
 
 :root{
@@ -21,6 +25,20 @@
   background-color: #141414;
   color: #FFF; 
   
+}
+
+@media (max-width:800px){
+  html{
+
+    font-size: 60.2%;
+  }
+}
+
+@media (max-width:500px){
+  html{
+
+    font-size: 58.2%;
+  }
 }
 
 

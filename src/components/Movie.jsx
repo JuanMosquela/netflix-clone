@@ -7,8 +7,8 @@ const Movie = ({ movie }) => {
     <Card
         key={movie.id}
         sx={{
-        minWidth:240,
-        height:160,
+        width:{ md:240, sm:160, xs: 120},
+        height:{ md:160, sm: 100, xs:80},
         borderRadius:'5px',
                      
         }}>
