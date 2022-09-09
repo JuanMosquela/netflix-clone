@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react"
-import axios from "../axios"
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
+import axios from "../utils/axios"
 import Movie from "./Movie";
-
 import { Navigation, Pagination, Scrollbar, A11y, Thumbs } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';

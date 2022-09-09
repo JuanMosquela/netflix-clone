@@ -1,3 +1,4 @@
+import { Box, Stack } from "@mui/system"
 import { useEffect, useState } from "react"
 import SearchBar from "./SearchBar"
 
@@ -55,9 +56,9 @@ const Navbar = () => {
             width={100}
             height={50}
             />
-            <ul
-              style={{
-                display:'flex',
+            <Box
+              sx={{
+                display:{ md:'flex', xs:'none'},
                 color:'#FFF',
                 gap:'2rem',
                 marginLeft:'35px',
@@ -68,7 +69,7 @@ const Navbar = () => {
                 <li>Series</li>
                 <li>Movies</li>
                 <li>My list</li>
-            </ul>
+            </Box>
         </div>
         <div 
             

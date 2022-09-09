@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import './App.css';
 import Banner from './components/Banner';
 import SimpleSlider from './components/SimpleSlider';
-import requests from './requests';
+import requests from './utils/requests';
 
 
 function App() {

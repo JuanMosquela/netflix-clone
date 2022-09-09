@@ -3,7 +3,7 @@ import {GoTriangleRight} from 'react-icons/go'
 import {AiOutlineInfoCircle} from 'react-icons/ai'
 import { Box } from '@mui/system'
 import { useEffect, useState } from 'react'
-import axios from '../axios'
+import axios from '../utils/axios'
 
 
 const base_urlPoster = 'https://image.tmdb.org/t/p/original/'
