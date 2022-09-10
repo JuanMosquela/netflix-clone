@@ -8,8 +8,7 @@ const Navbar = () => {
  
 
     useEffect(() => {
-      const changeBackground = () => {
-        console.log(window.scrollY)
+      const changeBackground = () => {        
         if (window.scrollY >= 66) {
           setNavbar(true)
           

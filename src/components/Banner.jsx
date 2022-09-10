@@ -52,6 +52,7 @@ const Banner = ({ url }) => {
                 variant='h1'
                     color='#FFF'
                       sx={{
+                        fontWeight:700,
                         fontSize:{md:'100px', sm:'70px', xs:'40px'},
                         marginBottom:'2rem'
                                                                         

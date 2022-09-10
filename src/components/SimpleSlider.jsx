@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Box } from "@mui/system";
-import { Typography } from "@mui/material";
+import { Modal, Typography } from "@mui/material";
 
 
 
@@ -18,7 +18,11 @@ import { Typography } from "@mui/material";
 const SimpleSlider = ({ url, title }) => {
 
     const [movies, setMovies] = useState([]) 
-    const [loading, setLoading] = useState(false)   
+    const [loading, setLoading] = useState(false)  
+    
+    
+
+    
 
     useEffect(() => {
         const fetchURL = async () => {
@@ -40,8 +44,7 @@ const SimpleSlider = ({ url, title }) => {
 
   return (
     <Box sx={{      
-      padding:'2rem 2%',
-      
+      padding:'2rem 2%',    
       
     }}>
       <Typography
@@ -91,11 +94,13 @@ const SimpleSlider = ({ url, title }) => {
       }}
     >
       
-      {movies.map(movie => (
+      {movies.map(movie => (       
 
-        <SwiperSlide>
-          <Movie movie={movie} />
-        </SwiperSlide>
+        
+          <SwiperSlide>
+            <Movie movie={movie} />
+          </SwiperSlide>
+       
       ))}
       
   </Swiper>
