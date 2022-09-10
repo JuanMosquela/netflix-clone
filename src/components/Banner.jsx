@@ -36,7 +36,7 @@ const Banner = ({ url }) => {
                                                
                 sx={{
                     objectFit:'cover',
-                    backgroundImage:`url(${base_urlPoster}${movie?.poster_path})`,
+                    backgroundImage:`url(${base_urlPoster}${movie?.backdrop_path})`,
                     backgroundPosition:'center',
                     backgroundSize:'cover',
                     minHeight: { md:'90vh', sm:'85vh', xs:'60vh' }

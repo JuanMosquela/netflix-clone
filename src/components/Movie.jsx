@@ -40,13 +40,12 @@ const Movie = ({ movie }) => {
         <CardMedia 
             onClick={handleOpen}
             component='img'             
-            image={`${base_urlPoster}${movie?.poster_path}`}
+            image={`${base_urlPoster}${movie?.poster_path}` }
             alt={movie.name}            
             sx={{                    
                 height:'100%',
                 width:'100%',
-                overflow:'hidden',
-                
+                overflow:'hidden',                
                 objectFit:'cover',
                     
                 '&:hover': {
