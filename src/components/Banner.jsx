@@ -88,7 +88,10 @@ const Banner = ({ url }) => {
                             borderRadius:'5px',
                             px:'15px',
                             textTransform:'capitalize',
-                            fontWeight:'bold'
+                            fontWeight:'bold',
+                            '&:hover': {
+                                backgroundColor:'#FFF'
+                            }
                         }}>
                             <GoTriangleRight
                             style={{ marginRight:'10px', transform:'scale(1.4)' }} />
@@ -101,9 +104,11 @@ const Banner = ({ url }) => {
                             backgroundColor:'rgba(128, 128, 128, .6)',
                             borderRadius:'5px', 
                             textTransform:'capitalize', 
-                            px:'15px',           
-                            
-                            color:"#FFF"
+                            px:'15px',                            
+                            color:"#FFF",
+                            '&:hover': {
+                                backgroundColor:'rgba(128, 128, 128, .8)'
+                            }
                         }}>
                             <AiOutlineInfoCircle 
                             style={{ marginRight:'10px', transform:'scale(1.4)' }} />

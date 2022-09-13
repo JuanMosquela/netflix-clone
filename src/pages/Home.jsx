@@ -5,9 +5,7 @@ import requests from "../utils/requests"
 
 
 const Home = () => {
-  return (
-    <div>
-        <Banner url={requests.fetchNetlixOriginals} />
+  return (           
         <Box sx={{ 
             marginTop: { md:'-100px', sm:'-90px', xs:'-25px' }, }}>
             <SimpleSlider url={requests.fetchTrending} title='Trending Now' />      
@@ -17,7 +15,7 @@ const Home = () => {
             <SimpleSlider url={requests.fetchComedyMovies} title='Comedy Movies' />       
             <SimpleSlider url={requests.fetchDocumentaries} title='Documentaries' /> 
         </Box>
-    </div>
+    
   )
 }
 export default Home

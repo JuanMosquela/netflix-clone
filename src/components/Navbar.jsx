@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Box, Stack } from "@mui/system"
 import { useEffect, useState } from "react"
 import SearchBar from "./SearchBar"
@@ -64,10 +65,10 @@ const Navbar = () => {
                 
               }}
             >
-                <li>Home</li>
-                <li>Series</li>
-                <li>Movies</li>
-                <li>My list</li>
+                <Link to='/'><li>Home</li></Link>
+                <Link to='/series'><li>Series</li></Link>                
+                <Link to='/movies'><li>Movies</li></Link>
+                <Link to='/myList'><li>My List</li></Link>
             </Box>
         </div>
         <div 

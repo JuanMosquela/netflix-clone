@@ -8,6 +8,8 @@ import Navbar from './components/Navbar'
 import App from './App';
 import MyList from './pages/MyList';
 import ScrollToTop from './components/ScrollToTop';
+import Movies from './pages/Movies';
+import Series from './pages/Series';
 
 
 
@@ -15,13 +17,10 @@ import ScrollToTop from './components/ScrollToTop';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>  
-        <Navbar /> 
+        
         <ScrollToTop />     
         <Routes>
-            <Route path='/' element={<App />}>
-                <Route index element={<Home />} />
-                <Route path='/myList' element={<MyList />} />
-            </Route>
+            <Route path='/' element={<App />} />            
             <Route path='/login' element={<Login />} />
             <Route path='/signUp' element={<SignUp />} />
         </Routes>        

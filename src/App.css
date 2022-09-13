@@ -12,10 +12,25 @@
   font-size: 62.5%;
 }
 
+a{
+  color: #FFF;
+  list-style: none;
+  text-decoration: none;
+}
+
+button{
+  cursor: pointer;
+  
+}
+
+
+
 
 
 :root{
   --linear-gradient-top: linear-gradient(to bottom, rgba(51, 51, 51, 0.9),transparent);
+  --color-red: rgb(229, 9, 20);
+  --color-grey:#737373;
   
 
 }
