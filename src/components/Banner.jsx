@@ -36,7 +36,7 @@ const Banner = ({ url }) => {
                                                
                 sx={{
                     objectFit:'cover',
-                    backgroundImage:`url(${base_urlPoster}${movie?.backdrop_path})`,
+                    background:`linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4) ),url(${base_urlPoster}${movie?.backdrop_path})`,
                     backgroundPosition:'center',
                     backgroundSize:'cover',
                     minHeight: { md:'90vh', sm:'85vh', xs:'60vh' }
@@ -44,17 +44,18 @@ const Banner = ({ url }) => {
             >
                 <Box sx={{ 
                     marginLeft:'2%',
-                    pt:'140px'
+                    pt:'140px',                  
                     
-                    
-                     }}>
+                    }}>
                 <Typography
                 variant='h1'
                     color='#FFF'
                       sx={{
                         fontWeight:700,
                         fontSize:{md:'100px', sm:'70px', xs:'40px'},
-                        marginBottom:'2rem'
+                        marginBottom:'2rem',
+                        maxWidth:'60%'
+                        
                                                                         
                     }}>
                     {movie?.name || movie?.original_name}
