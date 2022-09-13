@@ -1,8 +1,49 @@
 import { Box, Button, Typography } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import Background from '../img/background.jpg'
+import { firebaseAuth } from '../utils/firebase-config'
 
 const Login = () => {
+
+  const navigate = useNavigate()
+
+  
+  const [form, setForm] = useState({
+    email:'',
+    password:''
+  })
+
+  const handleChange = (e) => {
+    
+    setForm({
+      ...form, 
+      [e.target.name]: e.target.value
+    })
+    
+
+  }
+  
+   const handleLogIn = async() => {
+    try {
+      const {email, password} = form;
+      await signInWithEmailAndPassword(firebaseAuth, email, password)
+      
+      
+    } catch (error) {
+      console.log(error)
+      
+    }
+   }
+
+   onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if(currentUser) navigate('/')
+
+   })
+
+
+
   return (
     <div style={{
       background: `radial-gradient(circle at center,rgba(0,0,0,0.1), rgba(0,0,0,0.8) ),url(${Background})`,
@@ -68,13 +109,14 @@ const Login = () => {
             textAlign:'left',
             fontWeight:'600'
           }}>
-            Sign Up
+            Sign In
         </Typography>
-        <input 
+        <input
+          onChange={(e) => handleChange(e)} 
           type="text" 
-          name='username' 
-          value='' 
-          placeholder='Username'
+          name='email' 
+          value={form.email} 
+          placeholder='Email address'
           style={{
             display:'block',
             width:'100%',
@@ -89,9 +131,10 @@ const Login = () => {
             
           }} />
         <input 
+          onChange={(e) => handleChange(e)}
           type="text" 
           name='password' 
-          value='' 
+          value={form.password}
           placeholder='Password'
           style={{
             display:'block',
@@ -107,6 +150,7 @@ const Login = () => {
             
           }} />
           <Button 
+            onClick={() => handleLogIn()}
             variant='outlined'
             sx={{
               backgroundColor:'var(--color-red)',

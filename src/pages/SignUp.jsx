@@ -1,19 +1,54 @@
 import { Button, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Background from '../img/background.jpg'
 import { MdOutlineArrowForwardIos } from 'react-icons/md'
 import { useState } from 'react'
+import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
+import { firebaseAuth } from '../utils/firebase-config'
 
 const SignUp = () => {
 
+  const navigate = useNavigate()
+
   const [password, setPassword] = useState(false)
+  const [form, setForm] = useState({
+    email:'',
+    password:''
+  })
+
+  const handleChange = (e) => {
+    
+    setForm({
+      ...form, 
+      [e.target.name]: e.target.value
+    })
+    
+
+  }
+  
+   const handleSignIn = async() => {
+    try {
+      const {email, password} = form;
+      await createUserWithEmailAndPassword(firebaseAuth, email, password)
+      
+      
+    } catch (error) {
+      console.log(error)
+      
+    }
+   }
+
+   onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if(currentUser) navigate('/')
+
+   })
 
 
 
   return (
     <div style={{
-      background: `radial-gradient(circle at center,rgba(0,0,0,0.1), rgba(0,0,0,0.8) ),url(${Background})`, 
+      background: `radial-gradient(circle at center,rgba(255,255,255,0), rgba(0,0,0,0.8) ),url(${Background})`, 
       minHeight:'100vh',
       position:'fixed',
       width:'100vw' 
@@ -89,8 +124,9 @@ const SignUp = () => {
         }}>
           <input 
             type="text" 
-            name='email' 
-            value='' 
+            name='email'
+            value={form.email}
+            onChange={(e) => handleChange(e)} 
             placeholder='Email address'
             style={{
               fontSize:{md:'17px', sm:'14px', xs:'10px'},
@@ -100,7 +136,8 @@ const SignUp = () => {
               <input 
               type="password" 
               name='password' 
-              value='' 
+              value={form.password}
+              onChange={(e) => handleChange(e)} 
               placeholder='Password'
               style={{
                 fontSize:{md:'17px', sm:'14px', xs:'10px'},
@@ -124,9 +161,33 @@ const SignUp = () => {
             }}>
             Get Started
             <MdOutlineArrowForwardIos style={{marginLeft:'15px'}} />                           
+          </Button>       
+
+          )}
+          
+        </Box>
+        {password && (
+            <Button 
+            variant="contained"
+            onClick={() => handleSignIn()}
+            
+            sx={{
+                marginTop:'1rem',
+                fontSize:{md:'17px', sm:'14px', xs:'10px'},
+                backgroundColor:'var(--color-red)',            
+                textTransform:'capitalize', 
+                padding:'12px 20px',                            
+                color:"#FFF",
+                span:'2',
+                
+                '&:hover': {
+                  backgroundColor:'var(--color-red)'
+                }
+            }}>
+            Sign Up
+            <MdOutlineArrowForwardIos style={{marginLeft:'15px'}} />                           
           </Button>
           )}
-        </Box>
       </Box>
     </div>
     </div>
