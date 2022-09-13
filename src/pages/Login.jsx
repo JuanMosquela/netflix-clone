@@ -1,46 +1,23 @@
 import { Box, Button, Typography } from '@mui/material'
 import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth'
+import { useContext } from 'react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { UserContext } from '../context/UserProvider'
 import Background from '../img/background.jpg'
 import { firebaseAuth } from '../utils/firebase-config'
 
 const Login = () => {
 
-  const navigate = useNavigate()
-
+   const {handleChange, handleLogIn, form} = useContext(UserContext) 
   
-  const [form, setForm] = useState({
-    email:'',
-    password:''
-  })
+   
 
-  const handleChange = (e) => {
-    
-    setForm({
-      ...form, 
-      [e.target.name]: e.target.value
-    })
+  //  onAuthStateChanged(firebaseAuth, (currentUser) => {
+  //   if(currentUser) navigate('/')
     
 
-  }
-  
-   const handleLogIn = async() => {
-    try {
-      const {email, password} = form;
-      await signInWithEmailAndPassword(firebaseAuth, email, password)
-      
-      
-    } catch (error) {
-      console.log(error)
-      
-    }
-   }
-
-   onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if(currentUser) navigate('/')
-
-   })
+  //  })
 
 
 

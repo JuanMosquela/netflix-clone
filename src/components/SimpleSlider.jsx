@@ -18,9 +18,7 @@ import { Modal, Typography } from "@mui/material";
 const SimpleSlider = ({ url, title }) => {
 
     const [movies, setMovies] = useState([]) 
-    const [loading, setLoading] = useState(false)  
-    
-    
+    const [loading, setLoading] = useState(false)
 
     
 
@@ -92,11 +90,8 @@ const SimpleSlider = ({ url, title }) => {
           spaceBetween: 32,
         },
       }}
-    >
-      
-      {movies.map(movie => (       
-
-        
+    >      
+      {movies.map(movie => (        
           <SwiperSlide>
             <Movie movie={movie} />
           </SwiperSlide>

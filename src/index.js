@@ -10,20 +10,26 @@ import MyList from './pages/MyList';
 import ScrollToTop from './components/ScrollToTop';
 import Movies from './pages/Movies';
 import Series from './pages/Series';
+import UserProvider from './context/UserProvider';
+import PrivateRoutes from './pages/PrivateRoutes';
 
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <BrowserRouter>  
-        
-        <ScrollToTop />     
-        <Routes>
-            <Route path='/' element={<App />} />            
-            <Route path='/login' element={<Login />} />
-            <Route path='/signUp' element={<SignUp />} />
-        </Routes>        
+    <BrowserRouter>
+        <UserProvider>
+            <ScrollToTop />     
+            <Routes>
+                <Route element={<PrivateRoutes />}>
+                  <Route path='/' element={<App />} exact/>           
+
+                </Route>
+                <Route path='/login' element={<Login />} />
+                <Route path='/signUp' element={<SignUp />} />
+            </Routes>        
+        </UserProvider>       
     </BrowserRouter>
     
   

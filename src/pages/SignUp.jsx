@@ -6,43 +6,14 @@ import { MdOutlineArrowForwardIos } from 'react-icons/md'
 import { useState } from 'react'
 import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 import { firebaseAuth } from '../utils/firebase-config'
+import { useContext } from 'react'
+import { UserContext } from '../context/UserProvider'
 
 const SignUp = () => {
 
-  const navigate = useNavigate()
-
   const [password, setPassword] = useState(false)
-  const [form, setForm] = useState({
-    email:'',
-    password:''
-  })
 
-  const handleChange = (e) => {
-    
-    setForm({
-      ...form, 
-      [e.target.name]: e.target.value
-    })
-    
-
-  }
-  
-   const handleSignIn = async() => {
-    try {
-      const {email, password} = form;
-      await createUserWithEmailAndPassword(firebaseAuth, email, password)
-      
-      
-    } catch (error) {
-      console.log(error)
-      
-    }
-   }
-
-   onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if(currentUser) navigate('/')
-
-   })
+  const { handleSignIn, handleChange, form  } = useContext(UserContext)
 
 
 
