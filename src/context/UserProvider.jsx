@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth"
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 import { firebaseAuth } from "../utils/firebase-config"
 
@@ -45,12 +45,13 @@ const UserProvider = ({ children }) => {
     }
    }
 
-   onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if(currentUser) navigate('/')
-    if(currentUser) setUser(true)
-    
+   useEffect(() => {
+    onAuthStateChanged(firebaseAuth, (currentUser) => {
+      if (currentUser) navigate('/')
+    });
+  }, []);
 
-   })
+   
 
 
   return (

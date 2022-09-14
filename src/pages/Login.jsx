@@ -1,25 +1,13 @@
 import { Box, Button, Typography } from '@mui/material'
-import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth'
 import { useContext } from 'react'
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { UserContext } from '../context/UserProvider'
 import Background from '../img/background.jpg'
-import { firebaseAuth } from '../utils/firebase-config'
+
 
 const Login = () => {
 
-   const {handleChange, handleLogIn, form} = useContext(UserContext) 
-  
-   
-
-  //  onAuthStateChanged(firebaseAuth, (currentUser) => {
-  //   if(currentUser) navigate('/')
-    
-
-  //  })
-
-
+   const {handleChange, handleLogIn, form} = useContext(UserContext)
 
   return (
     <div style={{

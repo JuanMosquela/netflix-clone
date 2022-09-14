@@ -21,9 +21,7 @@ const Navbar = () => {
 
     window.addEventListener('scroll', changeBackground)
       
-    }, [])
-    
-    
+    }, [])   
 
 
 
@@ -65,10 +63,10 @@ const Navbar = () => {
                 
               }}
             >
-                <Link to='/'><li>Home</li></Link>
-                <Link to='/series'><li>Series</li></Link>                
-                <Link to='/movies'><li>Movies</li></Link>
-                <Link to='/myList'><li>My List</li></Link>
+                <Link to='/'>Home</Link>
+                <Link to='/series'>Series</Link>                
+                <Link to='/movies'>Movies</Link>
+                <Link to='/myList'>My List</Link>
             </Box>
         </div>
         <div 

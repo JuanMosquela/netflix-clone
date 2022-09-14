@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from "../utils/axios"
 import Movie from "./Movie";
-import { Navigation, Pagination, Scrollbar, A11y, Thumbs } from 'swiper';
+import { Navigation, Pagination, Scrollbar, Thumbs } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -9,9 +9,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Box } from "@mui/system";
 import { Modal, Typography } from "@mui/material";
-
-
-
 
 
 
@@ -35,7 +32,7 @@ const SimpleSlider = ({ url, title }) => {
         }
         fetchURL()       
       
-    }, [url])
+    }, [])
 
     console.log(movies)
     
@@ -92,14 +89,14 @@ const SimpleSlider = ({ url, title }) => {
       }}
     >      
       {movies.map(movie => (        
-          <SwiperSlide>
+          <SwiperSlide key={movie.id}>
             <Movie movie={movie} />
           </SwiperSlide>
        
       ))}
       
   </Swiper>
-    </Box>
+  </Box>
     
     
   )

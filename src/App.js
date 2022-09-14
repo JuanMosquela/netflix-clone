@@ -1,4 +1,5 @@
 
+
 import './App.css';
 import Banner from './components/Banner';
 import Navbar from './components/Navbar';
@@ -12,7 +13,7 @@ function App() {
     <div className="App">
       <Navbar /> 
       <Banner url={requests.fetchNetlixOriginals} />
-      <Home />      
+      <Home />   
     </div>
   );
 }
