@@ -9,6 +9,8 @@ import App from './App';
 import MyList from './pages/MyList';
 import ScrollToTop from './components/ScrollToTop';
 import UserProvider from './context/UserProvider';
+import Home from './pages/Home';
+
 
 
 
@@ -23,7 +25,14 @@ root.render(
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<SignUp />} />
             
-            <Route exact path="/" element={<App />} />
+            <Route exact path="/" element={<App />}>
+              <Route index element={<Home />} />
+              <Route path="movies" element={<Movies />} />
+              <Route path="series" element={<Series />} />
+
+              <Route path="myList" element={<MyList />} />
+            </Route>
+
             </Routes>        
         </UserProvider>       
     </BrowserRouter>

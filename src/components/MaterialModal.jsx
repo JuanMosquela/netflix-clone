@@ -4,15 +4,13 @@ import { useEffect, useState } from "react";
 import {AiOutlineCloseCircle} from 'react-icons/ai'
 import axios from "../utils/axios"
 import { API_KEY } from "../utils/requests";
-import ReactPlayer from 'react-player/lazy'
-
-
+import ReactPlayer from 'react-player/lazy';
+import HdIcon from '@mui/icons-material/Hd';
 
 
 const MaterialModal = ({ handleClose, open, movie }) => {
 
-    const [trailerURL, setTrailerURL] = useState('')
-    
+    const [trailerURL, setTrailerURL] = useState('')    
 
     useEffect(() => {
         const fetchTrailer = async() => {
@@ -21,8 +19,7 @@ const MaterialModal = ({ handleClose, open, movie }) => {
                 return result.type === 'Trailer' 
             })
             
-            setTrailerURL(trailer.key)
-            
+            setTrailerURL(trailer.key)       
 
         }
 
@@ -30,8 +27,7 @@ const MaterialModal = ({ handleClose, open, movie }) => {
 
         fetchTrailer()
       
-    }, [])
-    
+    }, [])    
 
 
     const style = {
@@ -39,21 +35,12 @@ const MaterialModal = ({ handleClose, open, movie }) => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: '65%',       
+        width: '50%',       
         bgcolor: '#000',           
         boxShadow: 24,
-        color:'#FFF',
+        color:'#FFF',        
         
-        
-    };
-
-    const options={
-        height:'100%',
-        width:650,
-        playerVars: {
-            autoplay:1,
-        }
-    }
+    };   
 
 
 
@@ -88,19 +75,21 @@ const MaterialModal = ({ handleClose, open, movie }) => {
                 p={1}>
                 <Box
                 flex={4}>
-                    <Paper sx={{backgroundColor:'transparent', display:'flex', gap:'1rem'}}>
-                        <Typography variant="h6" mb={1} component="h3" sx={{ fontSize:'12px', color:'green' }} >
+                    <Paper sx={{backgroundColor:'transparent', display:'flex', gap:'1rem', alignItems:'center'}}>
+                        <Typography variant="h6" mb={1} component="h3" sx={{ fontSize:'12px', color:'rgb(135, 231, 135)'  }} >
                         {movie.vote_average} % Match
                         </Typography>  
                         
-                        <Typography variant="h6" mb={1} component="h3" sx={{ fontSize:'12px', color:'#FFF' }} >
-                        {movie.release_date}
+                        <Typography variant="h6" mb={1} component="h3" sx={{ fontSize:'12px', color:'#FFF'  }} >
+                        {movie.release_date} 
                         </Typography> 
+                        
+                        
                     </Paper> 
                     
                     
-                    <Typography variant="h6" component="p" sx={{ fontSize:'10px' }}>
-                    {movie.overview.slice(0,280)}...
+                    <Typography variant="h6" component="p" sx={{ fontSize:'14px' }}>
+                    {movie.overview} 
                     </Typography> 
                 </Box>   
                 <Box
@@ -108,11 +97,12 @@ const MaterialModal = ({ handleClose, open, movie }) => {
                   
                   
                   
+                  
                 >
-                    <Typography variant="h6" mb={1} component="p" sx={{ fontSize:'10px', color:'#FFF' }} >
+                    <Typography variant="h6" mb={1} component="p" sx={{ fontSize:'12px', color:'#FFF' }} >
                        Original lenguage: {movie.original_language}
                     </Typography> 
-                    <Typography variant="h6" mb={1} component="p" sx={{ fontSize:'10px', color:'#FFF' }} >
+                    <Typography variant="h6" mb={1} component="p" sx={{ fontSize:'12px', color:'#FFF' }} >
                         Total votes: {movie.vote_count}
                     </Typography> 
                 </Box>  
