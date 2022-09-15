@@ -8,14 +8,16 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Box } from "@mui/system";
-import { Modal, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 
 
-const SimpleSlider = ({ url, title }) => {
+
+const SimpleSlider = ({ url, title, style }) => {
 
     const [movies, setMovies] = useState([]) 
     const [loading, setLoading] = useState(false)
+    
 
     
 
@@ -34,7 +36,11 @@ const SimpleSlider = ({ url, title }) => {
       
     }, [])
 
-    console.log(movies)
+     console.log(movies)
+
+  
+
+    
     
 
   return (
@@ -89,11 +95,20 @@ const SimpleSlider = ({ url, title }) => {
       }}
     >      
       {movies.map(movie => (        
-          <SwiperSlide key={movie.id}>
-            <Movie movie={movie} />
+          <SwiperSlide 
+            
+            key={movie.id}>
+            
+            <Movie 
+              style={style} 
+              movie={movie} 
+                
+            />
+            
           </SwiperSlide>
        
       ))}
+      
       
   </Swiper>
   </Box>
