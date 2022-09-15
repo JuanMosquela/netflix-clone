@@ -1,14 +1,18 @@
 import { Card, CardMedia, CircularProgress, Modal, Paper, Stack, Typography } from "@mui/material"
 import { Box } from "@mui/system";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {AiOutlineCloseCircle} from 'react-icons/ai'
 import axios from "../utils/axios"
 import { API_KEY } from "../utils/requests";
 import ReactPlayer from 'react-player/lazy';
+import {MdOutlineAddCircleOutline} from 'react-icons/md'
+import { MoviesContext } from "../context/MoviesProvider";
 
 
 
 const MaterialModal = ({ handleClose, open, movie }) => {
+
+    const {addMovie} = useContext(MoviesContext)
 
     const [trailerURL, setTrailerURL] = useState('')    
 
@@ -30,17 +34,7 @@ const MaterialModal = ({ handleClose, open, movie }) => {
     }, [])    
 
 
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '50%',       
-        bgcolor: '#000',           
-        boxShadow: 24,
-        color:'#FFF',        
-        
-    };   
+     
 
 
 
@@ -51,9 +45,21 @@ const MaterialModal = ({ handleClose, open, movie }) => {
         onBackdropClick={() => handleClose()}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        sx={{ border:'none' }}
+        
     >
-        <Box sx={style}>
+        <Box sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+                  
+            bgcolor: '#000',           
+            boxShadow: 24,
+            color:'#FFF',            
+            width: { md:'50%', xs:'90%' },
+            overflow:'hidden'
+            
+        }}>
             <AiOutlineCloseCircle 
             onClick={() => handleClose()}
             style={{
@@ -62,6 +68,7 @@ const MaterialModal = ({ handleClose, open, movie }) => {
                 right:'5px',
                 fontSize:'30px'
             }} />
+            
             <ReactPlayer 
                 url={`https://www.youtube.com/watch?v=${trailerURL}`} 
                 controls={true}
@@ -73,6 +80,15 @@ const MaterialModal = ({ handleClose, open, movie }) => {
                 alignItems='center'
                 gap={4}
                 p={1}>
+                    <MdOutlineAddCircleOutline 
+                    onClick={() => addMovie(movie)}
+                        style={{
+                            position:'absolute',
+                            bottom:'5px',
+                            right:'5px',
+                            fontSize:'30px',
+                            cursor:'pointer'
+                        }} />
                 <Box
                 flex={4}>
                     <Paper sx={{backgroundColor:'transparent', display:'flex', gap:'1rem', alignItems:'center'}}>
@@ -82,8 +98,7 @@ const MaterialModal = ({ handleClose, open, movie }) => {
                         
                         <Typography variant="h6" mb={1} component="h3" sx={{ fontSize:'12px', color:'#FFF'  }} >
                         {movie.release_date} 
-                        </Typography> 
-                        
+                        </Typography>                       
                         
                     </Paper> 
                     

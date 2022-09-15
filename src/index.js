@@ -12,31 +12,27 @@ import UserProvider from './context/UserProvider';
 import Home from './pages/Home';
 import Movies from './pages/Movies';
 import Series from './pages/Series';
-
-
-
-
-
+import MoviesProvider from './context/MoviesProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
-        <UserProvider>
-            <ScrollToTop />     
-            <Routes>
-            <Route exact path="/login" element={<Login />} />
-            <Route exact path="/signup" element={<SignUp />} />
-            
-            <Route exact path="/" element={<App />}>
-              <Route index element={<Home />} />
-              <Route path="movies" element={<Movies />} />
-              <Route path="series" element={<Series />} />
+        <MoviesProvider>
+            <UserProvider>
+                <ScrollToTop />     
+                <Routes>
+                    <Route exact path="/login" element={<Login />} />
+                    <Route exact path="/signup" element={<SignUp />} />
+                    
+                    <Route exact path="/" element={<App />}>
+                        <Route index element={<Home />} />
+                        
+                        <Route path="myList" element={<MyList />} />
+                    </Route>
 
-              <Route path="myList" element={<MyList />} />
-            </Route>
-
-            </Routes>        
-        </UserProvider>       
+                </Routes>        
+            </UserProvider> 
+        </MoviesProvider>      
     </BrowserRouter>
     
   

@@ -3,6 +3,7 @@ import { Box, Stack } from "@mui/system"
 import { useEffect, useState } from "react"
 import SearchBar from "./SearchBar"
 
+
 const Navbar = () => {
 
     const [navbar, setNavbar] = useState(false)
@@ -64,8 +65,7 @@ const Navbar = () => {
               }}
             >
                 <Link to='/'>Home</Link>
-                <Link to='/series'>Series</Link>                
-                <Link to='/movies'>Movies</Link>
+                
                 <Link to='/myList'>My List</Link>
             </Box>
         </div>
