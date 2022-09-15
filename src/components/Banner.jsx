@@ -28,6 +28,8 @@ const Banner = ({ url }) => {
     }, [])  
 
     
+
+    
   return (
    
         <Stack>

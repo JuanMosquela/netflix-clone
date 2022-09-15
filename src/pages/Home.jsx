@@ -6,7 +6,7 @@ import requests from "../utils/requests"
 const Home = () => {
 
   const style = { 
-    height:'400px'
+    height:'340px'
 
   }
 

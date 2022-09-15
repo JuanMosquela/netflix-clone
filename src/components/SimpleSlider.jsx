@@ -16,7 +16,7 @@ import { Typography } from "@mui/material";
 const SimpleSlider = ({ url, title, style }) => {
 
     const [movies, setMovies] = useState([]) 
-    const [loading, setLoading] = useState(false)
+   
     
 
     
@@ -26,7 +26,7 @@ const SimpleSlider = ({ url, title, style }) => {
             try {
               const {data: {results}} = await axios.get(url);
               setMovies(results)
-              setLoading(true)
+              
                 
             } catch (error) {
                 console.log(error)                
@@ -36,7 +36,7 @@ const SimpleSlider = ({ url, title, style }) => {
       
     }, [])
 
-     console.log(movies)
+     
 
   
 
@@ -60,14 +60,11 @@ const SimpleSlider = ({ url, title, style }) => {
     <Swiper    
       modules={[Navigation, Pagination, Scrollbar, Thumbs]}
       spaceBetween={20}
-      slidesPerView={7}
-      
+      slidesPerView={7}      
       navigation={true}
-      grabCursor={true}
+      grabCursor={true}      
+      scrollbar={{ draggable: true }}      
       
-      scrollbar={{ draggable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
       breakpoints={{        
         200:{
           slidesPerView: 3,

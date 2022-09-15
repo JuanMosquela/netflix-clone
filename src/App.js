@@ -1,22 +1,32 @@
 
 
-import { Outlet } from 'react-router';
+import { useContext, useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router';
 import './App.css';
 import Banner from './components/Banner';
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
+import { UserContext } from './context/UserProvider';
 import requests from './utils/requests';
 
 
 
+
 function App() {
+  const navigate = useNavigate()
+    const { user } = useContext(UserContext)
+
+    useEffect(() => {
+        if(!user) navigate('/login') 
+      
+    }, [])
+    
   return (
-    <div className="App">
-      <Navbar /> 
+    <div className='App'>
+      <Navbar />
       <Banner url={requests.fetchNetlixOriginals} />
-      <Outlet />   
+      {user && <Outlet />} 
     </div>
-  );
+  )
 }
 
 export default App;

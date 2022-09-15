@@ -1,11 +1,15 @@
 import { Box, Button, Typography } from '@mui/material'
+import { useState } from 'react'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../context/UserProvider'
 import Background from '../img/background.jpg'
+import {AiFillEye, AiOutlineEyeInvisible} from 'react-icons/ai'
 
 
 const Login = () => {
+
+  const [showPassword, setShowPassword] = useState(false)
 
    const {handleChange, handleLogIn, form} = useContext(UserContext)
 
@@ -95,25 +99,37 @@ const Login = () => {
             border:'none',
             
           }} />
-        <input 
-          onChange={(e) => handleChange(e)}
-          type="text" 
-          name='password' 
-          value={form.password}
-          placeholder='Password'
-          style={{
-            display:'block',
-            width:'100%',
-            borderRadius:'5px',
-            padding:'15px 20px',
-            backgroundColor:'#333333',
-            color:'#FFF',
-            marginBottom:'3rem',
-            fontSize:'1.2rem',
-            outline:'none',
-            border:'none',
+        <div className="input-group" style={{ position:'relative' }}>
+          <input 
+            onChange={(e) => handleChange(e)}
+            type={showPassword ? 'text' : 'password'} 
+            name='password' 
+            value={form.password}
+            placeholder='Password'
+            style={{
+              display:'block',
+              width:'100%',
+              borderRadius:'5px',
+              padding:'15px 20px',
+              backgroundColor:'#333333',
+              color:'#FFF',
+              marginBottom:'3rem',
+              fontSize:'1.2rem',
+              outline:'none',
+              border:'none',
+              
+              
+            }} />
+          <div 
+            style={{ position:'absolute', top:'35%', right:'15px', transform:'scale(1.5)' }} 
+            onClick={() => setShowPassword(!showPassword)}
+            >
+              {!showPassword ? <AiFillEye  /> : <AiOutlineEyeInvisible />}
+          </div>
+        </div>
             
-          }} />
+
+        
           <Button 
             onClick={() => handleLogIn()}
             variant='outlined'

@@ -47,7 +47,9 @@ const UserProvider = ({ children }) => {
 
    useEffect(() => {
     onAuthStateChanged(firebaseAuth, (currentUser) => {
+      console.log(currentUser)
       if (currentUser) navigate('/')
+      setUser(true)
     });
   }, []);
 

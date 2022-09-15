@@ -5,7 +5,7 @@ import {AiOutlineCloseCircle} from 'react-icons/ai'
 import axios from "../utils/axios"
 import { API_KEY } from "../utils/requests";
 import ReactPlayer from 'react-player/lazy';
-import HdIcon from '@mui/icons-material/Hd';
+
 
 
 const MaterialModal = ({ handleClose, open, movie }) => {

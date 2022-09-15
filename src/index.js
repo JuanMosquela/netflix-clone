@@ -10,6 +10,8 @@ import MyList from './pages/MyList';
 import ScrollToTop from './components/ScrollToTop';
 import UserProvider from './context/UserProvider';
 import Home from './pages/Home';
+import Movies from './pages/Movies';
+import Series from './pages/Series';
 
 
 
