@@ -1,5 +1,6 @@
+import { jsonEval } from "@firebase/util"
 import { addDoc, collection, getFirestore } from "firebase/firestore"
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 
 export const MoviesContext = createContext()
 
@@ -9,7 +10,15 @@ const MoviesProvider = ({ children }) => {
 
     const moviesCollectionRef =  collection(db, 'movies')
 
-    const [moviesList, setMoviesList] = useState([])
+    const [moviesList, setMoviesList] = useState(() => {
+        try {
+            const localStorageMovies = localStorage.getItem('movies')
+            return localStorageMovies ? JSON.parse(localStorageMovies) : []
+            
+        } catch (error) {
+            return []            
+        }
+    })
 
     const addMovie = async (movie) =>  {
         setMoviesList([...moviesList, movie])
@@ -29,7 +38,11 @@ const MoviesProvider = ({ children }) => {
         } 
     }
 
-    console.log(moviesList)
+    useEffect(() => {
+        localStorage.setItem('movies', JSON.stringify(moviesList))
+      
+    }, [moviesList])
+    
 
     
 
