@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { createContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 import { firebaseAuth } from "../utils/firebase-config"
@@ -8,6 +8,8 @@ export const UserContext = createContext()
 const UserProvider = ({ children }) => {
 
   const navigate = useNavigate()
+
+  const [loading, setLoading] = useState(false)
 
   const [form, setForm] = useState({
     email:'',
@@ -26,29 +28,52 @@ const UserProvider = ({ children }) => {
   }
   
    const handleLogIn = async() => {
+    setLoading(true)   
     try {
       const {email, password} = form;
-      await signInWithEmailAndPassword(firebaseAuth, email, password)      
+      await signInWithEmailAndPassword(firebaseAuth, email, password)   
+        
       
     } catch (error) {
       console.log(error)      
-    }
+    }finally {
+      setLoading(false)    
+     }
    }
 
    const handleSignIn = async() => {
+    setLoading(true) 
     try {
       const {email, password} = form;
-      await createUserWithEmailAndPassword(firebaseAuth, email, password)      
+      await createUserWithEmailAndPassword(firebaseAuth, email, password) 
+          
       
     } catch (error) {
       console.log(error)      
-    }
+    }finally {
+      setLoading(false)    
+     }
    }
+
+   const handleLogout = async() => {
+    setLoading(true) 
+    try {
+      await firebaseAuth.signOut(firebaseAuth) 
+          
+      
+    } catch (error) {
+      console.log(error)      
+    } finally {
+      setLoading(false)    
+     }
+   }
+   
+   
 
    useEffect(() => {
     onAuthStateChanged(firebaseAuth, (currentUser) => {
-      console.log(currentUser)
-      if (currentUser) navigate('/')
+      
+      currentUser ? navigate('/') : navigate('/login')
       setUser(true)
     });
   }, []);
@@ -57,7 +82,7 @@ const UserProvider = ({ children }) => {
 
 
   return (
-    <UserContext.Provider value={{ handleChange, handleLogIn, handleSignIn, user, form  }}>
+    <UserContext.Provider value={{ handleChange, handleLogIn, handleSignIn, handleLogout,  user, form, loading  }}>
         {children}
     </UserContext.Provider>
   )

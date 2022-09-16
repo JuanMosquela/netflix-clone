@@ -65,6 +65,7 @@ const Navbar = () => {
               }}
             >
                 <Link to='/'>Home</Link>
+                <Link to='/logout'>logout</Link>
                 
                 <Link to='/myList'>My List</Link>
             </Box>

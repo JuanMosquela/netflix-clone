@@ -13,6 +13,7 @@ import Home from './pages/Home';
 import Movies from './pages/Movies';
 import Series from './pages/Series';
 import MoviesProvider from './context/MoviesProvider';
+import Logout from './pages/Logout';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -25,10 +26,11 @@ root.render(
                     <Route exact path="/signup" element={<SignUp />} />
                     
                     <Route exact path="/" element={<App />}>
-                        <Route index element={<Home />} />
-                        
+                        <Route index element={<Home />} />                        
                         <Route path="myList" element={<MyList />} />
                     </Route>
+                        <Route path='/logout' element={<Logout />} />
+                    
 
                 </Routes>        
             </UserProvider> 

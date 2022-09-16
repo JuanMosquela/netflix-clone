@@ -1,4 +1,4 @@
-import { Button, Typography } from '@mui/material'
+import { Button, CircularProgress, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import { Link, useNavigate } from 'react-router-dom'
 import Background from '../img/background.jpg'
@@ -13,7 +13,7 @@ const SignUp = () => {
 
   const [password, setPassword] = useState(false)
 
-  const { handleSignIn, handleChange, form  } = useContext(UserContext)
+  const { handleSignIn, handleChange, form, loading  } = useContext(UserContext)
 
 
 
@@ -130,7 +130,8 @@ const SignUp = () => {
                   backgroundColor:'var(--color-red)'
                 }
             }}>
-            Get Started
+              {loading ? <CircularProgress style={{color:'rgba(255,255,255,.5)'}} /> : 'Get Started' }
+           
             <MdOutlineArrowForwardIos style={{marginLeft:'15px'}} />                           
           </Button>       
 

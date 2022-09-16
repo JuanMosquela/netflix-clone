@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button, CircularProgress, Typography } from '@mui/material'
 import { useState } from 'react'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
@@ -11,7 +11,7 @@ const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false)
 
-   const {handleChange, handleLogIn, form} = useContext(UserContext)
+   const {handleChange, handleLogIn, form, loading} = useContext(UserContext)
 
   return (
     <div style={{
@@ -149,7 +149,7 @@ const Login = () => {
                outline:'none',
             }
             }}>
-            Sign In
+            {loading ? <CircularProgress style={{color:'rgba(255,255,255,.5)'}} /> : 'Sign In' }
           </Button>
         
         <Typography
