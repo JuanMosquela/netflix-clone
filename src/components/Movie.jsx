@@ -33,7 +33,7 @@ const Movie = ({ movie, style }) => {
         key={movie.id}
         sx={{
         width:{ md:240, sm:160, xs: 120},
-        height: style ? style.height : { md:160, sm: 100, xs:80},
+        height: style ? {md: style.height, xs:180} : { md:160, sm: 100, xs:80},
         borderRadius:'5px',
                      
         }}>

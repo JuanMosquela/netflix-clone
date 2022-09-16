@@ -5,36 +5,21 @@ import { Card, CardMedia, Stack, Typography } from "@mui/material"
 import { Box } from "@mui/system"
 import {AiOutlineCloseCircle} from 'react-icons/ai'
 import {MdOutlineError} from 'react-icons/md'
-import { useEffect } from "react"
 
-import {collection, getDocs, getFirestore} from 'firebase/firestore'
+
 
 
 const base_urlPoster = 'https://image.tmdb.org/t/p/original/'
 
 const MyList = () => { 
 
-  const { moviesList, removeMovie, moviesCollectionRef } = useContext(MoviesContext)
+  const { moviesList, removeMovie } = useContext(MoviesContext)
   
-  const [movies, setMovies] = useState([])
-
   
 
-  useEffect(() => {
+  
 
-    const getMovies = async() => {
-      const data = await getDocs(moviesCollectionRef);
-      setMovies(data.docs.map(doc => ({...doc.data(), id: doc.id})))      
-
-    }
-
-    getMovies()
-
-    
-
-    
-    
-  }, [])
+  
   
 
   

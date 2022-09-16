@@ -26,12 +26,14 @@ const Logout = () => {
         
         
       }}>
-        <img 
-        src="https://www.stickpng.com/img/download/580b57fcd9996e24bc43c529/image" 
-        alt="logo"
-        width={200}
-        height={100}
-      />
+        <Link to='/'>
+            <img 
+            src="https://www.stickpng.com/img/download/580b57fcd9996e24bc43c529/image" 
+            alt="logo"
+            width={200}
+            height={100}
+        />
+        </Link>
       <Button 
         variant="contained"
         sx={{

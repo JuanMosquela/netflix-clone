@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Box, Stack } from "@mui/system"
 import { useEffect, useState } from "react"
-import SearchBar from "./SearchBar"
+
 
 
 const Navbar = () => {
@@ -57,23 +57,25 @@ const Navbar = () => {
             />
             <Box
               sx={{
-                display:{ md:'flex', xs:'none'},
+                display:'flex',
+                
                 color:'#FFF',
-                gap:'2rem',
-                marginLeft:'35px',
+                gap:{md:'3rem', xs:'5rem'},
+                marginLeft:'30px'
+                
                 
               }}
             >
                 <Link to='/'>Home</Link>
-                <Link to='/logout'>logout</Link>
                 
                 <Link to='/myList'>My List</Link>
+                <Link to='/logout'>Logout</Link>
             </Box>
         </div>
         <div 
             
             style={{ display:'flex', alignItems:'center' }}>
-            <SearchBar />
+            
             <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" 
                 alt="profile"
