@@ -76,11 +76,15 @@ const Navbar = () => {
             
             style={{ display:'flex', alignItems:'center' }}>
             
+            <Link to='/logout'>
             <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" 
                 alt="profile"
                 width={30}
-                height={30} />
+                height={30} 
+                
+            />
+            </Link>
             
         </div>
     </header>
